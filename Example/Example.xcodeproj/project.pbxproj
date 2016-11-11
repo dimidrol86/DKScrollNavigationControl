@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121E88D3CBB5B4F2F9FC31C7 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A504206BBBEC971C197CF0C /* libPods-test.a */; };
 		7E805B291DD5D667001D79D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B281DD5D667001D79D3 /* main.m */; };
 		7E805B2C1DD5D667001D79D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B2B1DD5D667001D79D3 /* AppDelegate.m */; };
 		7E805B2F1DD5D667001D79D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B2E1DD5D667001D79D3 /* ViewController.m */; };
@@ -15,7 +14,6 @@
 		7E805B341DD5D667001D79D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E805B331DD5D667001D79D3 /* Assets.xcassets */; };
 		7E805B371DD5D667001D79D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E805B351DD5D667001D79D3 /* LaunchScreen.storyboard */; };
 		7E805B401DD5D696001D79D3 /* DKScrollNavigationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B3F1DD5D696001D79D3 /* DKScrollNavigationControl.m */; };
-		FED49191B91BEAC3EF7EA7A7 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDE81CACF8881D53B38399F /* libPods-Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,11 +30,7 @@
 		7E805B381DD5D667001D79D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E805B3E1DD5D696001D79D3 /* DKScrollNavigationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKScrollNavigationControl.h; path = ../../Library/DKScrollNavigationControl.h; sourceTree = "<group>"; };
 		7E805B3F1DD5D696001D79D3 /* DKScrollNavigationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKScrollNavigationControl.m; path = ../../Library/DKScrollNavigationControl.m; sourceTree = "<group>"; };
-		7EDE81CACF8881D53B38399F /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A504206BBBEC971C197CF0C /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C3B52757120212D7FD2B924 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		C602635147C76F0BBE2AF139 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		ED1A0A472C74BDC6C35AE6D1 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				121E88D3CBB5B4F2F9FC31C7 /* libPods-test.a in Frameworks */,
-				FED49191B91BEAC3EF7EA7A7 /* libPods-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +47,6 @@
 		3DB458AEC6FDB5713D5403F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9C3B52757120212D7FD2B924 /* Pods-test.debug.xcconfig */,
-				ED1A0A472C74BDC6C35AE6D1 /* Pods-test.release.xcconfig */,
 				C602635147C76F0BBE2AF139 /* Pods-Example.debug.xcconfig */,
 				60D5F75A7BDAD6522C550CD2 /* Pods-Example.release.xcconfig */,
 			);
@@ -66,8 +56,6 @@
 		4047354520CBEAC53043A15F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A504206BBBEC971C197CF0C /* libPods-test.a */,
-				7EDE81CACF8881D53B38399F /* libPods-Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -362,6 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.finch.test.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.finch.test.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
