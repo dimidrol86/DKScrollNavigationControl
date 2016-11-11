@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum ScrollDirection {
+typedef enum scrolldirection {
     ScrollDirectionNone,
     ScrollDirectionRight,
     ScrollDirectionLeft,
@@ -25,11 +25,16 @@ typedef enum ScrollDirection {
 /** Current page */
 @property (nonatomic,readonly) NSInteger currentPage;
 
+
+
 /** Corresponding scroll view for async scroll */
 @property (nonatomic,nullable,weak) UIScrollView *asyncScrollView;
 
 /** Strip color */
 @property (nonatomic,nullable,strong) UIColor *stripColor;
+
+/** Items text color */
+@property (nonatomic,nullable,strong) UIColor *textColor;
 
 /** Strip height */
 @property (nonatomic) CGFloat stripHeight;

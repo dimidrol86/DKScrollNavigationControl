@@ -1,4 +1,5 @@
 #import "DKScrollNavigationControl.h"
+#import <PureLayout/PureLayout.h>
 
 @interface DKScrollNavigationControl() <UIScrollViewDelegate>
 
