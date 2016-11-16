@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E778E86F9A53D40395B97A0 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFA9EE6F55F307381E5510 /* libPods-Example.a */; };
 		7E805B291DD5D667001D79D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B281DD5D667001D79D3 /* main.m */; };
 		7E805B2C1DD5D667001D79D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B2B1DD5D667001D79D3 /* AppDelegate.m */; };
 		7E805B2F1DD5D667001D79D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E805B2E1DD5D667001D79D3 /* ViewController.m */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34AFA9EE6F55F307381E5510 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D5F75A7BDAD6522C550CD2 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		7E805B241DD5D667001D79D3 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E805B281DD5D667001D79D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E778E86F9A53D40395B97A0 /* libPods-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +59,7 @@
 		4047354520CBEAC53043A15F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34AFA9EE6F55F307381E5510 /* libPods-Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -6,6 +6,7 @@
 {
     NSMutableArray<UILabel*> *labels;
     CGFloat lastContentOffset;
+    NSInteger lastPage;
 }
 
 @end
@@ -51,26 +52,36 @@
     _source=source;
     int i=0;
 
-    for (NSString *s in _source) {
-        int fontsize=15;
-        
-        UILabel *l=[[UILabel alloc] initWithFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
-        l.userInteractionEnabled=YES;
-        l.tag=i;
-        
-        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap:)];
-        [l addGestureRecognizer:tap];
-        
-        [l setTextAlignment:NSTextAlignmentCenter];
-        l.adjustsFontSizeToFitWidth =YES;
-        [l setFont:[UIFont systemFontOfSize:fontsize]];
-        [l setTextColor:[UIColor whiteColor]];
-        [l setText:s];
-        [l setAlpha:(i==0) ? 1.0f : 0.5f];
-        [self addSubview:l];
-        [labels addObject:l];
+    for (NSString *s in [_source objectEnumerator]) {
+        @autoreleasepool {
+            UILabel *l=[[UILabel alloc] initWithFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
+            l.userInteractionEnabled=YES;
+            l.tag=i;
+            
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap:)];
+            [l addGestureRecognizer:tap];
+            
+            [l setTextAlignment:NSTextAlignmentCenter];
+            l.adjustsFontSizeToFitWidth =YES;
+            if (_font) {
+                [l setFont:_font];
+            }
+            else {
+                int fontsize=15;
+                [l setFont:[UIFont systemFontOfSize:fontsize]];
+            }
+            if (_textColor){
+                [l setTextColor:_textColor];
+            }
+            else {
+                [l setTextColor:[UIColor whiteColor]];
+            }
+            [l setText:s];
+            [l setAlpha:(i==0) ? 1.0f : 0.5f];
+            [self addSubview:l];
+            [labels addObject:l];
+        }
         i++;
-        
     }
     
 }
@@ -81,7 +92,19 @@
 }
 
 
+-(void)setTextColor:(UIColor *)textColor{
+    _textColor = textColor;
+    for (UILabel *label in [labels objectEnumerator]) {
+        [label setTextColor:textColor];
+    }
+}
 
+-(void)setFont:(UIFont *)font{
+    _font = font;
+    for (UILabel *label in [labels objectEnumerator]) {
+        [label setFont:font];
+    }
+}
 
 #pragma mark - Actions
 
@@ -119,7 +142,7 @@
     
     if (!animated) {
         
-        for (UILabel *label in labels) {
+        for (UILabel *label in [labels objectEnumerator]) {
             [label setAlpha:0.5f];
         }
         
@@ -140,11 +163,7 @@
             [_asyncScrollView setContentOffset:CGPointMake(frame.size.width * page, 0) animated:NO];
         }
         
-    } completion:^(BOOL finished) {
-        if ([_delegateVC respondsToSelector:@selector(DKScrollNavigationControlFinishPageChanging:)]) {
-            [_delegateVC DKScrollNavigationControlFinishPageChanging:page];
-        }
-    }];
+    } completion:^(BOOL finished) {}];
 }
 
 #pragma mark - helpers
@@ -169,13 +188,22 @@
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     
-    _currentPage=floorf(fractionalPage);
+    NSInteger p = floorf(fractionalPage);
+    if (p >= 0 && p < _source.count) {
+        _currentPage=p;
+    }
     
     if (scrollView == _asyncScrollView) {
         CGFloat offset=roundf(_asyncScrollView.contentOffset.x * [self scrollCoefficient]);
         self.contentOffset = CGPointMake(offset, 0);
     }
     else if (scrollView == self) {
+        
+        if (_currentPage != lastPage) {
+            if ([_delegateVC respondsToSelector:@selector(DKScrollNavigationControlFinishPageChanging:)]) {
+                [_delegateVC DKScrollNavigationControlFinishPageChanging:_currentPage];
+            }
+        }
         if (_currentPage >= 0 && _currentPage + 1 < _source.count) {
             CGFloat alpha;
             if (scrollDirection==ScrollDirectionLeft)
@@ -202,6 +230,8 @@
             }
         }
     }
+    
+    lastPage = _currentPage;
     
     if ([_delegateVC respondsToSelector:@selector(scrollViewDidScroll:)]){
         [_delegateVC scrollViewDidScroll:scrollView];

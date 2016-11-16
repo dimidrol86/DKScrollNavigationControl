@@ -25,20 +25,20 @@ typedef enum scrolldirection {
 /** Current page */
 @property (nonatomic,readonly) NSInteger currentPage;
 
-
-
 /** Corresponding scroll view for async scroll */
 @property (nonatomic,nullable,weak) UIScrollView *asyncScrollView;
-
-/** Strip color */
-@property (nonatomic,nullable,strong) UIColor *stripColor;
 
 /** Items text color */
 @property (nonatomic,nullable,strong) UIColor *textColor;
 
-/** Strip height */
-@property (nonatomic) CGFloat stripHeight;
+/** Items text color */
+@property (nonatomic,nullable,strong) UIFont *font;
 
+/** Strip height */
+//@property (nonatomic) CGFloat stripHeight;
+
+/** Strip color */
+//@property (nonatomic,nullable,strong) UIColor *stripColor;
 
 /** Go to specific page */
 -(void)goToPage:(NSInteger)page;

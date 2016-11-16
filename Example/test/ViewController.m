@@ -27,9 +27,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor blackColor];
-    src=@[@"Test",@"TEst2",@"urh3fuyehrfhu",@"r4fuij"];
+    src=@[@"Test",@"Test2",@"Test3",@"Test4"];
     
     scroll = [[DKScrollNavigationControl alloc] initWithFrame:CGRectZero];
+    scroll.delegateVC = self;
+    scroll.textColor = [UIColor orangeColor];
+    scroll.font = [UIFont boldSystemFontOfSize:20];
     [self.view addSubview:scroll];
     [scroll autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:20];
     [scroll autoSetDimensionsToSize:CGSizeMake(150, 50)];
